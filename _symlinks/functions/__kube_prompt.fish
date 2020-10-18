@@ -1,0 +1,1 @@
+/home/takuto-komazaki/src/github.com/komazarari/fish-kube-prompt/__kube_prompt.fish
