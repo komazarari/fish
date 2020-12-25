@@ -11,7 +11,7 @@
 # end
 
 # https://github.com/rafaelrinaldi/pure
-set pure_color_current_folder $pure_color_cyan
+set pure_color_current_directory $pure_color_info # blue -> cyan
 set pure_color_blue (set_color brblue)
 
 set -x GOPATH $HOME/go
