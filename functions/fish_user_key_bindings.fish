@@ -18,3 +18,17 @@ end
 function j -d 'jump z'
   __z -l 2>&1 | eval (__fzfcmd --height 40% --nth 2.. --reverse --inline-info +s --tac --query '${*##-* }')
 end
+bind \cj j
+bind \ej fzf-bcd-widget
+
+
+function __myawsprofile -d 'insert profile'
+    echo hoge
+    set -l profopt
+    cat ~/.aws/config | grep -o -P "\[profile\s+\K[\w-]+" | fzf | read select
+    [ -n "$select" ]; and set profopt "--profile $select"
+    commandline -it -- "$profopt"
+    commandline -f repaint
+end
+bind \eP '__myawsprofile'
+bind -M insert \eP '__myawsprofile'
