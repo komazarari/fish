@@ -46,6 +46,7 @@ set -x FZF_CTRL_T_COMMAND "command rg --files --hidden --glob \"!.git/*\" \$dir 
 
 # aws
 test -x (which aws_completer); and complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+alias prof='export AWS_PROFILE=(cat ~/.aws/config | grep -o -P "\[profile\s+\K[\w-]+" | fzf)'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.fish.inc" ]; . "$HOME/google-cloud-sdk/path.fish.inc"; end
