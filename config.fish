@@ -40,6 +40,9 @@ alias be='bundle exec'
 alias bi='bundle install'
 alias bu='bundle update'
 alias k='kubectl'
+alias kx='kubectx'
+alias kn='kubens'
+alias dc='docker compose'
 
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*"'
 set -x FZF_CTRL_T_COMMAND "command rg --files --hidden --glob \"!.git/*\" \$dir | sed '1d; s#^\./##'"
@@ -50,3 +53,5 @@ alias prof='export AWS_PROFILE=(cat ~/.aws/config | grep -o -P "\[profile\s+\K[\
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.fish.inc" ]; . "$HOME/google-cloud-sdk/path.fish.inc"; end
+
+[ -f ~/.inshellisense/key-bindings.fish ] && source ~/.inshellisense/key-bindings.fish
