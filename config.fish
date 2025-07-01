@@ -47,6 +47,11 @@ alias dc='docker compose'
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*"'
 set -x FZF_CTRL_T_COMMAND "command rg --files --hidden --glob \"!.git/*\" \$dir | sed '1d; s#^\./##'"
 
+if test -x (which starship)
+  starship init fish | source
+  alias kube_on_stership='sed -i -e \'/\[kubernetes\]/,/^\[.*\]/ s/disabled = true/disabled = false/\' ~/.config/starship.toml'
+  alias kube_off_stership='sed -i -e \'/\[kubernetes\]/,/^\[.*\]/ s/disabled = false/disabled = true/\' ~/.config/starship.toml'
+end
 # aws
 test -x (which aws_completer); and complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 alias prof='export AWS_PROFILE=(cat ~/.aws/config | grep -o -P "\[profile\s+\K[\w-]+" | fzf)'
