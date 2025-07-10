@@ -1,12 +1,7 @@
 # fzf_key_bindings
-function l --description alias\ l=rg\ --files\ --hidden\ --glob\ \"!.git/\*\"\ \|\ batcat\ \(fzf\ --preview\ \'batcat\ --style=numbers\ --color=always\ --line-range\ :\$LINES\ \{\}\'\)
-  fzf --preview 'batcat --style=numbers --color=always --line-range :$LINES {}' | read -l result
-  [ "$result" ]; and batcat --plain $result
-end
-
-# Defined in - @ line 1
-function bat --wraps=batcat --description 'alias bat=batcat'
-  batcat  $argv;
+function l --description alias\ l=rg\ --files\ --hidden\ --glob\ \"!.git/\*\"\ \|\ bat\ \(fzf\ --preview\ \'bat\ --style=numbers\ --color=always\ --line-range\ :\$LINES\ \{\}\'\)
+  fzf --preview 'bat --style=numbers --color=always --line-range :$LINES {}' | read -l result
+  [ "$result" ]; and bat --plain $result
 end
 
 function fzf-bcd-widget -d 'cd backwards'
