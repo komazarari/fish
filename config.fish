@@ -43,6 +43,8 @@ alias k='kubectl'
 alias kx='kubectx'
 alias kn='kubens'
 alias dc='docker compose'
+alias mx='mise x --'
+alias wd='cd (git worktree list | cut -f1 -d" " | fzf )'
 
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git/*"'
 set -x FZF_CTRL_T_COMMAND "command rg --files --hidden --glob \"!.git/*\" \$dir | sed '1d; s#^\./##'"
@@ -57,9 +59,11 @@ and fzf --fish | source
 
 # aws
 command -q aws_completer
-    and complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed "s/ $//"; end)'
+    and complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+#    and complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | tr -d ' '; end)'
 
-alias prof='export AWS_PROFILE=(cat ~/.aws/config | grep -o -P "\[profile\s+\K[\w-]+" | fzf)'
+#alias prof='export AWS_PROFILE=(cat ~/.aws/config | grep -o -P "\[profile\s+\K[\w-]+" | fzf)'
+alias prof='export AWS_PROFILE=(COMP_LINE="aws --profile " /usr/local/bin/aws_completer | fzf)'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.fish.inc" ]; . "$HOME/google-cloud-sdk/path.fish.inc"; end
