@@ -1,1 +1,0 @@
-/home/takuto-komazaki/src/github.com/evanlucas/fish-kubectl-completions/completions/kubectl.fish

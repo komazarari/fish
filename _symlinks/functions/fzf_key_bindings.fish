@@ -1,1 +1,0 @@
-/home/takuto-komazaki/.fzf/shell/key-bindings.fish
